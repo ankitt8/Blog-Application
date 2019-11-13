@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.shortcuts import HttpResponse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+
 # def home(request):
 #     context = {
 #         'posts':Post.objects.all()
@@ -60,7 +61,7 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Post
-    success_url = '/'
+    success_url = "/"
     def test_func(self):
         post = self.get_object()
         if self.request.user == post.author:

@@ -8,7 +8,20 @@ class UserRegisterForm(UserCreationForm):
         model = User
         fields = ['username', 'email', 'password1', 'password2']
 
+    def clean(self):
+        cd = self.cleaned_data
 
+        email = cd.get("email")
+        uname = cd.get("username")
+        temp = User.objects.all()
+        for usr in temp:
+            if usr.username == uname:
+                raise forms.ValidationError("UserName already in use")
+
+        for usr in temp:
+            if usr.email == email:
+                raise forms.ValidationError("Email already in use")
+        return cd
 
 
 class UserUpdateForm(forms.ModelForm):

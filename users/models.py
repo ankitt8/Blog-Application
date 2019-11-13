@@ -8,8 +8,8 @@ class Profile(models.Model):
     image = models.ImageField(default = 'default.jpg', upload_to = 'profile_pics')
 
     def __str__(self):
-        return "%s Profile" %self.user.username
-
+        #return "%s Profile" %self.user.username
+        return "{} Profile".format(self.user.username)
 
     # def save(self, *args, **kwargs):
     #     super().save(*args, **kwargs)

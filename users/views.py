@@ -3,12 +3,17 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 # Create your views here.
 
 def register(request):
+    # temp = User.objects.all()
+    # for usr in temp:
+    #     print("Username {}, Email {}".format(usr.username, usr.email))
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
-        if form.is_valid():
+
+        if form.is_valid(): # clean method is called when i am calling form.is_valid where i check whether email already exists or not
             form.save()
             username = form.cleaned_data.get('username')
             messages.success(request, "Account created for %s!"%username)
@@ -20,6 +25,7 @@ def register(request):
 
 @login_required
 def profile(request):
+    #print("USERRRR{}".format(type(request.user)))
     if request.method == 'POST':
         u_form = UserUpdateForm(request.POST,instance = request.user)
         p_form = ProfileUpdateForm(request.POST ,
