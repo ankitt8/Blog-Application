@@ -1,5 +1,5 @@
 # Blog-Application
-I have created a Django Blog Application as a part of my learning Django path.
-I have hosted the same on heroku the link for the same is given below
+Created a Blog  Application using DJANGO framework which allows users to perform CRUD operations on  the posts and also the application  is very secure.I have used DJANGO features like TEMPLATE INHERITANCE, MODELS, FORMS, FLASH MESSAGES,  DECORATORS, SIGNALS, CLASS BASED VIEWS, MIXINS, PAGINATION, MODEL VIEW TEMPLATE architecture.
 
-learningdjangoo.herokuapp.com
+I have used HEROKU to deploy my application, used AWS S3 to store the profile images.
+The link to the website is - learningdjangoo.herokuapp.com
